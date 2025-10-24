@@ -5,13 +5,13 @@
 
     <div>
         <ul>
-            <li ng-repeat="n in arr | orderBy: order | filter: search" ng-show="n.available">
-                <img ng-src="{{n.dp}}" alt="" style="margin: -12px 10px 0 0; float:left;width: 50px;" ng-show="n.dp">
+            <li ng-repeat="people in peoples | orderBy: order | filter: search" ng-show="people.available">
+                <img ng-src="{{people.dp}}" alt="" style="margin: -12px 10px 0 0; float:left;width: 50px;" ng-show="people.dp">
                 <img ng-src="content/img/default.png" alt="" style="margin: -12px 10px 0 0; float:left;width: 50px;"
-                    ng-show="!n.dp">
-                <h2>{{n.name}}: {{n.fee|currency:"₹"}}</h2>
-                <div class="remove" ng-click="remove(n)">X</div>
-                <span>age: {{n.age}}</span>
+                    ng-show="!people.dp">
+                <h2>{{people.name}}: {{people.fee|currency:"₹"}}</h2>
+                <div class="remove" ng-click="remove(people)">X</div>
+                <span>age: {{people.age}}</span>
             </li>
         </ul>
     </div>

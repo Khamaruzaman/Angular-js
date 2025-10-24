@@ -1,43 +1,49 @@
-app = angular.module("app", ['ngRoute']);
+app = angular.module("app", ["ngRoute"]);
 
-app.config(["$routeProvider", function ($routeProvider) {
+app.config([
+  "$routeProvider",
+  "$locationProvider",
+  function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix("!");
+
     $routeProvider
-        .when('/home', {
-            templateUrl: "views/home.html"
-        })
-        .when('/list', {
-            templateUrl: "views/list.html",
-            controller: "cont2"
-        })
-        .otherwise({
-            redirectTo: '/home'
-        });
-}]);
-app.controller("cont2", ["$scope", function ($scope) {
+      .when("/home", {
+        templateUrl: "views/home.html",
+      })
+      .when("/list", {
+        templateUrl: "views/list.html",
+        controller: "controller1",
+      })
+      .otherwise({
+        redirectTo: "/home",
+      });
+  },
+]);
 
-    $scope.remove = function (n) {
-        var index = $scope.arr.indexOf(n);
-        $scope.arr.splice(index, 1);
+app.controller("controller1", [
+  "$scope",
+  "$http",
+  function ($scope, $http) {
+    $http.get("content/data/peoples.json").then(function (response) {
+      $scope.peoples = response.data;
+    });
+
+    $scope.remove = function (people) {
+      var index = $scope.peoples.indexOf(people);
+      $scope.peoples.splice(index, 1);
     };
 
     $scope.add = function () {
-        $scope.arr.push({
-            name: $scope.new.name,
-            age: $scope.new.age,
-            fee: $scope.new.fee,
-            available: true
-        });
+      $scope.peoples.push({
+        name: $scope.new.name,
+        age: $scope.new.age,
+        fee: $scope.new.fee,
+        available: true,
+      });
 
-        $scope.new.name = "";
-        $scope.new.age = "";
-        $scope.new.fee = "";
+      $scope.new.name = "";
+      $scope.new.age = "";
+      $scope.new.fee = "";
     };
-
-    $scope.arr = [
-        { name: 'John', age: 30, fee: 50.00, available: true, dp: 'content/img/dp.png' },
-        { name: 'Jane', age: 25, fee: 45.00, available: true, dp: 'content/img/dp.png' },
-        { name: 'Mike', age: 42, fee: 65.50, available: true, dp: 'content/img/dp.png' },
-        { name: 'Emily', age: 28, fee: 60.00, available: true, dp: 'content/img/dp.png' },
-        { name: 'David', age: 35, fee: 55.25, available: true, dp: 'content/img/dp.png' }
-    ];
-}])
+  },
+]);

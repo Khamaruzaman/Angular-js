@@ -1,0 +1,37 @@
+[
+  {
+    "name": "John",
+    "age": 30,
+    "fee": 50,
+    "available": true,
+    "dp": "content/img/dp.png"
+  },
+  {
+    "name": "Jane",
+    "age": 25,
+    "fee": 45,
+    "available": true,
+    "dp": "content/img/dp.png"
+  },
+  {
+    "name": "Mike",
+    "age": 42,
+    "fee": 65.5,
+    "available": true,
+    "dp": "content/img/dp.png"
+  },
+  {
+    "name": "Emily",
+    "age": 28,
+    "fee": 60,
+    "available": true,
+    "dp": "content/img/dp.png"
+  },
+  {
+    "name": "David",
+    "age": 35,
+    "fee": 55.25,
+    "available": true,
+    "dp": "content/img/dp.png"
+  }
+]
